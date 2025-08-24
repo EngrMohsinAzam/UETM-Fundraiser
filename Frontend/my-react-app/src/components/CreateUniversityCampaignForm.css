@@ -1,0 +1,237 @@
+/* CreateUniversityCampaignForm.css */
+/* Advanced and formal styling for university campaign creation form */
+
+:root {
+  --primary-color: #1a237e;
+  --primary-light: #534bae;
+  --primary-dark: #000051;
+  --secondary-color: #ffab00;
+  --text-color: #212121;
+  --text-light: #757575;
+  --background-color: #ffffff;
+  --error-color: #d32f2f;
+  --success-color: #388e3c;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+  --font-primary: 'Georgia', serif;
+  --font-secondary: 'Arial', sans-serif;
+}
+
+.campaign-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+}
+
+.form-title {
+  font-family: var(--font-primary);
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.form-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.form-group {
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: #fafafa;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(83, 75, 174, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #bdbdbd;
+  font-style: italic;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: var(--error-color);
+  background-color: rgba(211, 47, 47, 0.03);
+}
+
+.error-text {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.error-text::before {
+  content: '⚠';
+  margin-right: 0.4rem;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #9e9e9e;
+}
+
+.success-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(56, 142, 60, 0.1);
+  color: var(--success-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-align: center;
+  border-left: 4px solid var(--success-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .campaign-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
+  
+  .submit-button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+/* Animation for success message */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.success-message {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Focus states for accessibility */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

@@ -1,0 +1,306 @@
+/* --------------------------------------
+ * Modal Component Styles
+ * Enhanced with advanced styling techniques
+ * -------------------------------------- */
+
+/* Variables for consistent theming */
+:root {
+  /* Colors */
+  --modal-primary: #2563eb;
+  --modal-primary-dark: #1e40af;
+  --modal-primary-light: rgba(37, 99, 235, 0.15);
+  --modal-text-dark: #1e293b;
+  --modal-text-muted: #64748b;
+  --modal-text-light: #f8fafc;
+  --modal-bg: #ffffff;
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --modal-border: #e2e8f0;
+  --modal-cancel: #f1f5f9;
+  --modal-cancel-hover: #e2e8f0;
+  --modal-danger: #dc2626;
+  
+  /* Spacing & Layout */
+  --modal-border-radius-sm: 6px;
+  --modal-border-radius-md: 12px;
+  --modal-border-radius-lg: 16px;
+  
+  /* Shadows */
+  --modal-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --modal-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --modal-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --modal-transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --modal-transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Backdrop overlay */
+.modal-backdrop {
+  position: fixed;
+  inset: 0; /* Modern shorthand for top, right, bottom, left */
+  background-color: var(--modal-overlay);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: modalBackdropFadeIn var(--modal-transition-normal) forwards;
+}
+
+/* Modal container */
+.modal-container {
+  background-color: var(--modal-bg);
+  padding: 2.25rem;
+  border-radius: var(--modal-border-radius-lg);
+  box-shadow: var(--modal-shadow-lg);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+  animation: modalSlideIn var(--modal-transition-normal) forwards;
+}
+
+/* Optional accent border at top */
+.modal-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--modal-primary), color-mix(in srgb, var(--modal-primary), #6366f1 70%));
+}
+
+/* Modal header section */
+.modal-header {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: var(--modal-cancel);
+  color: var(--modal-text-muted);
+  cursor: pointer;
+  transition: all var(--modal-transition-fast);
+}
+
+.modal-close-button:hover {
+  background: var(--modal-cancel-hover);
+  color: var(--modal-text-dark);
+  transform: scale(1.05);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--modal-text-dark);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  color: var(--modal-text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Modal content */
+.modal-content {
+  margin-bottom: 1.5rem;
+}
+
+/* Form groups */
+.modal-form-group {
+  margin-bottom: 1.25rem;
+}
+
+.modal-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--modal-text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--modal-border-radius-md);
+  border: 2px solid var(--modal-border);
+  font-size: 1rem;
+  color: var(--modal-text-dark);
+  background-color: var(--modal-bg);
+  transition: all var(--modal-transition-fast);
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: var(--modal-primary);
+  box-shadow: 0 0 0 3px var(--modal-primary-light);
+}
+
+.modal-input::placeholder {
+  color: var(--modal-text-muted);
+  opacity: 0.7;
+}
+
+/* Input with icon */
+.modal-input-with-icon {
+  position: relative;
+}
+
+.modal-input-with-icon .modal-input {
+  padding-left: 2.75rem;
+}
+
+.modal-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--modal-text-muted);
+  pointer-events: none;
+}
+
+/* Amount input */
+.modal-amount-input {
+  position: relative;
+}
+
+.modal-amount-input::before {
+  content: "$";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--modal-text-dark);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.modal-amount-input .modal-input {
+  padding-left: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons section */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+/* Button styles */
+.modal-btn {
+  flex: 1;
+  padding: 0.9rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: var(--modal-border-radius-md);
+  cursor: pointer;
+  transition: all var(--modal-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Specific button styles */
+.modal-btn.cancel {
+  background-color: var(--modal-cancel);
+  color: var(--modal-text-dark);
+}
+
+.modal-btn.cancel:hover {
+  background-color: var(--modal-cancel-hover);
+  transform: translateY(-2px);
+}
+
+.modal-btn.donate {
+  background-color: var(--modal-primary);
+  color: var(--modal-text-light);
+}
+
+.modal-btn.donate:hover {
+  background-color: var(--modal-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px var(--modal-primary-light);
+}
+
+.modal-btn.danger {
+  background-color: var(--modal-danger);
+  color: var(--modal-text-light);
+}
+
+.modal-btn.danger:hover {
+  background-color: color-mix(in srgb, var(--modal-danger), black 10%);
+  transform: translateY(-2px);
+}
+
+/* Animation keyframes */
+@keyframes modalBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalSlideOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Closing animation - add .closing class to modal-container when closing */
+.modal-container.closing {
+  animation: modalSlideOut var(--modal-transition-fast) forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 1.75rem;
+    border-radius: var(--modal-border-radius-md);
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+  }
+  
+  .modal-btn {
+    width: 100%;
+  }
+}
