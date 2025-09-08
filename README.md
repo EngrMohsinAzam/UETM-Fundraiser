@@ -67,7 +67,7 @@ Create Campaign Form – Fully validated campaign creation form.
 
 ⚙️ Deployment
 1. Clone the repository
-git clone https://github.com/your-username/educational-fundraising-dapp.git
+git clone (https://github.com/EngrMohsinAzam/UETM-Fundraiser.git)
 cd educational-fundraising-dapp
 
 2. Install dependencies
